@@ -11,7 +11,7 @@ class CryptoTableViewCell: UITableViewCell {
 
     @IBOutlet weak var imageCoinView: UIImageView!
     @IBOutlet weak var nameCoinLabel: UILabel!
-    @IBOutlet weak var maxCoinSupplyLabel: UILabel!
+    @IBOutlet weak var priceChangePercentage24hLabel: UILabel!
     @IBOutlet weak var priceCoinLabel: UILabel!
     
     override func awakeFromNib() {
@@ -19,10 +19,14 @@ class CryptoTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    func addData(model: Model){
-        nameCoinLabel.text = model.name
-        maxCoinSupplyLabel.text = String(describing: model.max_supply)
-        priceCoinLabel.text = String(describing: model.current_price)
+    var viewModel: CryptoTableViewCellViewModelProtocol! {
+        didSet {
+            guard let imageData = viewModel.imageCoinView else { return }
+            imageCoinView.image = UIImage(data: imageData)
+            nameCoinLabel.text = viewModel.coinName
+            priceChangePercentage24hLabel.text = viewModel.priceChangePercentage24h
+            priceCoinLabel.text = viewModel.price
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

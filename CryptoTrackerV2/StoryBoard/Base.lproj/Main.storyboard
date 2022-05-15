@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellMainController" rowHeight="70" id="kzm-hR-32E" userLabel="Cell" customClass="CryptoTableViewCell" customModule="CryptoTrackerV2" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="70" id="kzm-hR-32E" userLabel="Cell" customClass="CryptoTableViewCell" customModule="CryptoTrackerV2" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kzm-hR-32E" id="ZdK-Jp-8eE">
@@ -83,17 +83,16 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="imageCoinView" destination="eu5-0f-e9d" id="0FM-id-ovb"/>
-                                            <outlet property="maxCoinSupplyLabel" destination="gLJ-Si-C0l" id="r8o-Qy-d0Q"/>
-                                            <outlet property="nameCoinLabel" destination="mWB-Wg-jVH" id="0T0-Iv-Yah"/>
-                                            <outlet property="priceCoinLabel" destination="gHg-ay-obN" id="fop-ER-GoX"/>
-                                            <segue destination="1T2-Bt-V90" kind="show" id="5Gw-np-odV"/>
+                                            <outlet property="imageCoinView" destination="eu5-0f-e9d" id="4GS-7J-Ql1"/>
+                                            <outlet property="nameCoinLabel" destination="mWB-Wg-jVH" id="Rso-gO-ofA"/>
+                                            <outlet property="priceChangePercentage24hLabel" destination="gLJ-Si-C0l" id="4kT-eO-6sj"/>
+                                            <outlet property="priceCoinLabel" destination="gHg-ay-obN" id="uWR-K0-Eiw"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="jMS-5H-Du0" id="bh2-Hy-b9b"/>
-                                    <outlet property="delegate" destination="jMS-5H-Du0" id="wXh-aU-jee"/>
+                                    <outlet property="dataSource" destination="jMS-5H-Du0" id="SzD-8b-UKe"/>
+                                    <outlet property="delegate" destination="jMS-5H-Du0" id="beF-hX-OUW"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -108,7 +107,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Crypto Tracker" id="53K-oZ-HyZ"/>
                     <connections>
-                        <outlet property="tableView" destination="t9A-5m-dKO" id="KKv-zb-zbh"/>
+                        <outlet property="tableView" destination="t9A-5m-dKO" id="7OQ-g2-lO4"/>
+                        <segue destination="1T2-Bt-V90" kind="show" identifier="detailViewControllerSegue" id="zmC-rK-kZ9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DGH-YU-d5R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -224,10 +224,22 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="YvG-4z-vvA">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="star" catalog="system" id="XR4-p1-cIK"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="star" catalog="system" id="XR4-p1-cIK">
+                            <connections>
+                                <action selector="favoritButtonPressed:" destination="1T2-Bt-V90" id="6Wv-e0-S96"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="maxSuppyLabel" destination="A9u-4W-dlc" id="jA3-zg-aP9"/>
+                        <outlet property="coinNameLabel" destination="8Pq-ZK-KYi" id="NRM-5a-NCQ"/>
+                        <outlet property="coinPriceLabel" destination="zhj-uK-0eK" id="Ig3-Vc-yDg"/>
+                        <outlet property="curculatinSupply" destination="tUy-2e-yIA" id="zUi-Jp-dtr"/>
+                        <outlet property="favoritButton" destination="XR4-p1-cIK" id="TQB-od-XMi"/>
+                        <outlet property="height24h" destination="2Jz-sY-kFU" id="RaY-YG-5xH"/>
+                        <outlet property="low24h" destination="rHX-NJ-32N" id="uo7-LT-j0J"/>
+                        <outlet property="marketCapLabel" destination="rBs-DM-YDq" id="sEq-N1-3dC"/>
+                        <outlet property="maxSupply" destination="A9u-4W-dlc" id="n9G-d5-6cQ"/>
+                        <outlet property="priceChange24h" destination="QXc-ta-mNV" id="ApF-5y-Lgn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3WC-bR-nSb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

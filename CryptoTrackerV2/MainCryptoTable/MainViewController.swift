@@ -11,35 +11,48 @@ class MainViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
+    var viewModel: MainViewControllerViewModelProtocol! {
+        didSet {
+            viewModel.featchData {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        viewModel = MainViewControllerViewModel()
         // Do any additional setup after loading the view.
     }
     
     
-    
+//     MARK: - Navigation
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        let dvc = segue.destination as! DetailCoinViewController
+        let viewModel = sender as? DetailCoinViewControllerViewModelProtocol
+        dvc.viewModel = viewModel
     }
-    */
+    
 
 }
 
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return viewModel.numberOfRows()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CryptoTableViewCell
+        cell.viewModel = viewModel.cellViewModel(at: indexPath)
+        
+        return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let coin = viewModel.detailViewModel(at: indexPath)
+        performSegue(withIdentifier: "detailViewControllerSegue", sender: coin)
+    }
     
 }
