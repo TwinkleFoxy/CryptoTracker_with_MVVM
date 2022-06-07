@@ -6,37 +6,70 @@
 //
 
 import Foundation
+import UIKit
 
 protocol MainViewControllerViewModelProtocol: AnyObject {
     var coins: [Coin] { get }
+    var filteredCoins: [Coin] { get }
+    var searchTextIsEmpty: Bool { get }
+    var viewModelDidChange: ((MainViewControllerViewModelProtocol) -> ())? { get set }
     func featchData(complition: @escaping () -> ())
     func numberOfRows() -> Int
     func cellViewModel(at indexPath: IndexPath) -> CryptoTableViewCellViewModelProtocol
     func detailViewModel(at indexPath: IndexPath) -> DetailCoinViewControllerViewModelProtocol
+    func filterCoinsForSearchText(searchText: String)
 }
 
 class MainViewControllerViewModel: MainViewControllerViewModelProtocol {
-    var coins: [Coin] = []
+    internal var coins: [Coin] = []
+    internal var filteredCoins: [Coin] = []
+    internal var searchTextIsEmpty = true
+    
+    var viewModelDidChange: ((MainViewControllerViewModelProtocol) -> ())?
     
     func featchData(complition: @escaping () -> ()) {
         NetworkManager.shared.fetchData { [unowned self] coins in
             self.coins = coins
-            complition()
+            DispatchQueue.main.async {
+                complition()
+            }
         }
     }
     
     func numberOfRows() -> Int {
-        print(coins.count)
-        return coins.count
+        if searchTextIsEmpty {
+            return coins.count
+        }else {
+            return filteredCoins.count
+        }
     }
     
     func cellViewModel(at indexPath: IndexPath) -> CryptoTableViewCellViewModelProtocol {
-        let coin = coins[indexPath.row]
-        return CryptoTableViewCellViewModel(coin: coin)
+        if searchTextIsEmpty {
+            let coin = coins[indexPath.row]
+            return CryptoTableViewCellViewModel(coin: coin)
+        } else {
+            let coin = filteredCoins[indexPath.row]
+            return CryptoTableViewCellViewModel(coin: coin)
+        }
     }
     
     func detailViewModel(at indexPath: IndexPath) -> DetailCoinViewControllerViewModelProtocol {
-        let coin = coins[indexPath.row]
-        return DetailCoinViewControllerViewModel(coin: coin)
+        if searchTextIsEmpty {
+            let coin = coins[indexPath.row]
+            return DetailCoinViewControllerViewModel(coin: coin)
+        }else {
+            let coin = filteredCoins[indexPath.row]
+            return DetailCoinViewControllerViewModel(coin: coin)
+        }
+        
+    }
+    
+    func filterCoinsForSearchText(searchText: String) {
+        searchTextIsEmpty = searchText.isEmpty
+        filteredCoins = coins.filter({ coin in
+            return coin.name.lowercased().contains(searchText.lowercased())
+        })
+        viewModelDidChange?(self)
     }
 }
