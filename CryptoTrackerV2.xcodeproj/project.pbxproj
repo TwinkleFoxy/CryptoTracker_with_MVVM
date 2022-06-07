@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		88036E19284F97C700896B16 /* FavoritCoinsViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88036E18284F97C700896B16 /* FavoritCoinsViewControllerViewModel.swift */; };
+		88036E1B284F982E00896B16 /* FavoritCoinsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88036E1A284F982E00896B16 /* FavoritCoinsViewController.swift */; };
 		88F25A6C282E6A7400EE8B0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F25A6B282E6A7400EE8B0F /* AppDelegate.swift */; };
 		88F25A6E282E6A7400EE8B0F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F25A6D282E6A7400EE8B0F /* SceneDelegate.swift */; };
 		88F25A73282E6A7400EE8B0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88F25A71282E6A7400EE8B0F /* Main.storyboard */; };
@@ -25,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		88036E18284F97C700896B16 /* FavoritCoinsViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritCoinsViewControllerViewModel.swift; sourceTree = "<group>"; };
+		88036E1A284F982E00896B16 /* FavoritCoinsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritCoinsViewController.swift; sourceTree = "<group>"; };
 		88F25A68282E6A7400EE8B0F /* CryptoTrackerV2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoTrackerV2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88F25A6B282E6A7400EE8B0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88F25A6D282E6A7400EE8B0F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +59,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		88036E15284F973B00896B16 /* FavoritCoinsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				88036E1A284F982E00896B16 /* FavoritCoinsViewController.swift */,
+				88036E18284F97C700896B16 /* FavoritCoinsViewControllerViewModel.swift */,
+			);
+			path = FavoritCoinsViewController;
+			sourceTree = "<group>";
+		};
 		88F25A5F282E6A7400EE8B0F = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +89,7 @@
 			children = (
 				88F25A89282E79BE00EE8B0F /* MainCryptoTable */,
 				88F25A88282E797E00EE8B0F /* DetailCoinViewController */,
+				88036E15284F973B00896B16 /* FavoritCoinsViewController */,
 				88F25A87282E796300EE8B0F /* CryptoTableViewCell */,
 				88F25A8A282E79F100EE8B0F /* StoryBoard */,
 				88F25A8E282E7AD200EE8B0F /* Models */,
@@ -231,6 +245,7 @@
 			files = (
 				88F25A9E28301AE300EE8B0F /* MainViewControllerViewModel.swift in Sources */,
 				88F25AA42830395700EE8B0F /* DataManager.swift in Sources */,
+				88036E19284F97C700896B16 /* FavoritCoinsViewControllerViewModel.swift in Sources */,
 				88F25A90282E7BFA00EE8B0F /* NetworkManager.swift in Sources */,
 				88F25A6C282E6A7400EE8B0F /* AppDelegate.swift in Sources */,
 				88F25AA028301ED400EE8B0F /* CryptoTableViewCellViewModel.swift in Sources */,
@@ -240,6 +255,7 @@
 				88F25A86282E732D00EE8B0F /* CryptoTableViewCell.swift in Sources */,
 				88F25A80282E6EE200EE8B0F /* MainViewController.swift in Sources */,
 				88F25A82282E6EFD00EE8B0F /* DetailCoinViewController.swift in Sources */,
+				88036E1B284F982E00896B16 /* FavoritCoinsViewController.swift in Sources */,
 				88F25A94282E81A800EE8B0F /* Coin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

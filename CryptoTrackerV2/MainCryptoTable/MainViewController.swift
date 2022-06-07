@@ -76,7 +76,7 @@ class MainViewController: UIViewController {
 }
 
 
-
+// MARK: - UITableViewDataSource, UITableViewDelegate
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfRows()
@@ -94,11 +94,10 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         let coin = viewModel.detailViewModel(at: indexPath)
         performSegue(withIdentifier: "detailViewControllerSegue", sender: coin)
     }
-    
 }
 
 
-
+// MARK: - UISearchResultsUpdating
 extension MainViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let searchText = searchController.searchBar.text else { return }

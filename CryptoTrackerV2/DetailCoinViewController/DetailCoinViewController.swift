@@ -29,6 +29,10 @@ class DetailCoinViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        setFavoritStatus()
+    }
+    
     func setupUI() {
         coinNameLabel.text = viewModel.coinName
         setFavoritStatus()

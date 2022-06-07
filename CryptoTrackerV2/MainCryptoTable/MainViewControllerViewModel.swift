@@ -37,11 +37,7 @@ class MainViewControllerViewModel: MainViewControllerViewModelProtocol {
     }
     
     func numberOfRows() -> Int {
-        if searchTextIsEmpty {
-            return coins.count
-        }else {
-            return filteredCoins.count
-        }
+        searchTextIsEmpty ? coins.count : filteredCoins.count
     }
     
     func cellViewModel(at indexPath: IndexPath) -> CryptoTableViewCellViewModelProtocol {
