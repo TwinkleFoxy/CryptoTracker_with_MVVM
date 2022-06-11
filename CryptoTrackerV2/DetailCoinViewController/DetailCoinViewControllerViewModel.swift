@@ -32,37 +32,37 @@ class DetailCoinViewControllerViewModel: DetailCoinViewControllerViewModelProtoc
     var viewModelDidChange: ((DetailCoinViewControllerViewModelProtocol) -> ())?
     
     var coinName: String {
-        coin.name
+        "Coin Name: \(coin.name)"
     }
     
     var coinPrice: String {
-        "\(coin.current_price)"
+        "Coin Price: \(coin.current_price)"
     }
     
     var marketCap: String {
-        "\(coin.market_cap)"
+        "Market Cap: \(coin.market_cap)"
     }
     
     var curculatinSupply: String {
-        guard let curculatinSupply = coin.circulating_supply else { return "No Data" }
-        return "\(curculatinSupply)"
+        guard let curculatinSupply = coin.circulating_supply else { return "Curc. Supply: No Data" }
+        return "Curc. Supply: \(curculatinSupply)"
     }
     
     var maxSupply: String {
-        guard let maxSupply = coin.max_supply else { return "No Data" }
-        return "\(maxSupply)"
+        guard let maxSupply = coin.max_supply else { return "Max Supply: No Data" }
+        return "Max Supply: \(maxSupply)"
     }
     
     var height24h: String {
-        "\(coin.high_24h)"
+        "Height 24h: \(coin.high_24h)"
     }
     
     var low24h: String {
-        "\(coin.low_24h)"
+        "Low 24h: \(coin.low_24h)"
     }
     
     var priceChange24h: String {
-        "\(coin.price_change_percentage_24h)"
+        "Price Change 24h: \(coin.price_change_percentage_24h)"
     }
     
     var isFavorit: Bool {

@@ -83,7 +83,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="imageCoinView" destination="eu5-0f-e9d" id="4GS-7J-Ql1"/>
+                                            <outlet property="imageCoinView" destination="eu5-0f-e9d" id="8SV-8h-RhN"/>
                                             <outlet property="nameCoinLabel" destination="mWB-Wg-jVH" id="Rso-gO-ofA"/>
                                             <outlet property="priceChangePercentage24hLabel" destination="gLJ-Si-C0l" id="4kT-eO-6sj"/>
                                             <outlet property="priceCoinLabel" destination="gHg-ay-obN" id="uWR-K0-Eiw"/>
@@ -413,7 +413,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="VhX-7C-glb"/>
+        <segue reference="zmC-rK-kZ9"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="square.grid.3x2.fill" catalog="system" width="128" height="80"/>

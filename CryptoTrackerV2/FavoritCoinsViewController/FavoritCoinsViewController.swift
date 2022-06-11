@@ -26,7 +26,7 @@ class FavoritCoinsViewController: UIViewController {
         return searchController
     }()
     
-    var viewModel: FavoritCoinsViewControllerViewModelProtocol! {
+    var viewModel: MainViewControllerViewModelProtocol! {
         didSet {
             requestUpdateForTable()
         }
@@ -99,7 +99,7 @@ extension FavoritCoinsViewController: UITableViewDelegate, UITableViewDataSource
 extension FavoritCoinsViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let searchText = searchController.searchBar.searchTextField.text else { return }
-        viewModel.filterCoinForSearchText(searchText: searchText)
+        viewModel.filterCoinsForSearchText(searchText: searchText)
     }
 }
 

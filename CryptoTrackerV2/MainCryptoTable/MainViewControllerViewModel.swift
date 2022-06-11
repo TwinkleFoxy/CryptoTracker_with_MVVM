@@ -12,7 +12,7 @@ protocol MainViewControllerViewModelProtocol: AnyObject {
     var coins: [Coin] { get }
     var filteredCoins: [Coin] { get }
     var searchTextIsEmpty: Bool { get }
-    var viewModelDidChange: ((MainViewControllerViewModelProtocol) -> ())? { get set }
+    var viewModelDidChange: (() -> ())? { get set }
     func featchData(complition: @escaping () -> ())
     func numberOfRows() -> Int
     func cellViewModel(at indexPath: IndexPath) -> CryptoTableViewCellViewModelProtocol
@@ -25,7 +25,7 @@ class MainViewControllerViewModel: MainViewControllerViewModelProtocol {
     internal var filteredCoins: [Coin] = []
     internal var searchTextIsEmpty = true
     
-    var viewModelDidChange: ((MainViewControllerViewModelProtocol) -> ())?
+    var viewModelDidChange: (() -> ())?
     
     func featchData(complition: @escaping () -> ()) {
         NetworkManager.shared.fetchData { [unowned self] coins in
@@ -66,6 +66,6 @@ class MainViewControllerViewModel: MainViewControllerViewModelProtocol {
         filteredCoins = coins.filter({ coin in
             return coin.name.lowercased().contains(searchText.lowercased())
         })
-        viewModelDidChange?(self)
+        viewModelDidChange?()
     }
 }
