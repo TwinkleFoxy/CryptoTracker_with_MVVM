@@ -32,11 +32,11 @@ class DetailCoinViewControllerViewModel: DetailCoinViewControllerViewModelProtoc
     var viewModelDidChange: ((DetailCoinViewControllerViewModelProtocol) -> ())?
     
     var coinName: String {
-        "Coin Name: \(coin.name)"
+        "Name: \(coin.name)"
     }
     
     var coinPrice: String {
-        "Coin Price: \(coin.current_price)"
+        "Price: \(coin.current_price) $"
     }
     
     var marketCap: String {

@@ -2,17 +2,14 @@
 //  MainViewController.swift
 //  CryptoTrackerV2
 //
-//  Created by Алексей Однолько on 13.05.2022.
+//  Created by Алексей Однолько on 08.06.2022.
 //
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UITableViewController {
 
-    @IBOutlet weak var tableView: UITableView!
-    
-    
-    let refrashControl: UIRefreshControl = {
+    private let refrashControl: UIRefreshControl = {
         let refrashControl = UIRefreshControl()
         refrashControl.tintColor = .systemPink
         refrashControl.addTarget(self, action: #selector(updateDataByRefrashControl), for: .valueChanged)
@@ -30,69 +27,71 @@ class MainViewController: UIViewController {
     
     var viewModel: MainViewControllerViewModelProtocol! {
         didSet {
-            viewModel.featchData {
-                self.tableView.reloadData()
-            }
+            requestUpdateForTable()
         }
     }
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = MainViewControllerViewModel()
         setupUI()
         
         // Do any additional setup after loading the view.
     }
     
-    func setupUI() {
+    override func viewWillAppear(_ animated: Bool) {
+        requestUpdateForTable()
+    }
+    
+    
+    private func setupUI() {
+        tableView.register(UINib(nibName: "Cell", bundle: nil), forCellReuseIdentifier: "cell")
         tableView.refreshControl = refrashControl
         searchController.searchResultsUpdater = self
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         
-//        viewModel.viewModelDidChange = { [unowned self] _ in
-//            DispatchQueue.main.async {
-//                tableView.reloadData()
-//            }
-//        }
+        viewModel.viewModelDidChange = { [unowned self] in
+            DispatchQueue.main.async {
+                tableView.reloadData()
+            }
+        }
+    }
+    
+    private func requestUpdateForTable() {
+        viewModel.featchData { [unowned self] in
+            tableView.reloadData()
+        }
     }
     
     // MARK: - Func for uplade tableView from refrashControl Not worked !!!
     @objc func updateDataByRefrashControl() {
-        viewModel.featchData {
-            self.tableView.reloadData()
-        }
+        requestUpdateForTable()
         refrashControl.endRefreshing()
     }
     
-    
-//     MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let dvc = segue.destination as! DetailCoinViewController
-        let viewModel = sender as? DetailCoinViewControllerViewModelProtocol
-        dvc.viewModel = viewModel
-    }
 }
 
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
-extension MainViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension MainViewController {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfRows()
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CryptoTableViewCell
         cell.viewModel = viewModel.cellViewModel(at: indexPath)
         
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let coin = viewModel.detailViewModel(at: indexPath)
-        performSegue(withIdentifier: "detailViewControllerSegue", sender: coin)
+        let detaitViewModel = viewModel.detailViewModel(at: indexPath)
+        let detailViewController = DetailCoinViewController()
+        detailViewController.viewModel = detaitViewModel
+        navigationController?.pushViewController(detailViewController, animated: true)
     }
 }
 

@@ -7,18 +7,6 @@
 
 import Foundation
 
-//protocol FavoritCoinsViewControllerViewModelProtocol {
-//    var coins: [Coin] { get }
-//    var filteredCoins: [Coin] { get }
-//    var searchTextIsEmpty: Bool { get }
-//    var viewModelDidChange: (() -> ())? { get set }
-//    func featchData(complition: @escaping () -> ())
-//    func numberOfRows() -> Int
-//    func cellViewModel(at indexPath: IndexPath) -> (CryptoTableViewCellViewModelProtocol)
-//    func detailViewModel(at indexPath: IndexPath) -> (DetailCoinViewControllerViewModelProtocol)
-//    func filterCoinForSearchText(searchText: String) -> ()
-//}
-
 protocol FavoritCoinsViewControllerViewModelProtocol: MainViewControllerViewModelProtocol {
 }
 
