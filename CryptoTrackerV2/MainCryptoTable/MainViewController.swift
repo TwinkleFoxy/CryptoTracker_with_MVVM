@@ -9,7 +9,7 @@ import UIKit
 
 class MainViewController: UITableViewController {
 
-    private let refreshControl: UIRefreshControl = {
+    private let refrashControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.tintColor = .systemPink
         return refreshControl
@@ -46,7 +46,7 @@ class MainViewController: UITableViewController {
     private func setupUI() {
         tableView.register(UINib(nibName: "Cell", bundle: nil), forCellReuseIdentifier: "cell")
         tableView.refreshControl = refreshControl
-        refreshControl.addTarget(self, action: #selector(updateDataByRefrashControl), for: .valueChanged)
+        refrashControl.addTarget(self, action: #selector(updateDataByRefrashControl), for: .valueChanged)
         searchController.searchResultsUpdater = self
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
@@ -67,7 +67,7 @@ class MainViewController: UITableViewController {
     // MARK: - Func for uplade tableView from refrashControl Not worked !!!
     @objc func updateDataByRefrashControl() {
         requestUpdateForTable()
-        refreshControl.endRefreshing()
+        refrashControl.endRefreshing()
     }
     
 }
