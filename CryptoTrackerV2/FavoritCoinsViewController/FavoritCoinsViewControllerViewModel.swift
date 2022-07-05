@@ -12,58 +12,62 @@ protocol FavoritCoinsViewControllerViewModelProtocol: MainViewControllerViewMode
 
 
 class FavoritCoinsViewControllerViewModel: FavoritCoinsViewControllerViewModelProtocol {
-    var coins: [Coin] = []
-    
-    var filteredCoins: [Coin] = []
-    
-    var searchTextIsEmpty = true
+    private var searchTextIsEmpty = true
     
     var viewModelDidChange: (() -> ())?
     
-    func featchData(complition: @escaping () -> ()) {
-        NetworkManager.shared.fetchData { [unowned self] coins in
-            self.coins.removeAll()
-            for coin in coins {
-                if DataManager.shared.getFavoriteStatus(for: coin.name) {
-                    self.coins.append(coin)
-                }
-            }
+    func updateCoinData(complition: @escaping () -> ()) {
+        NetworkManager.shared.fetchData { coins in
+            CacheData.shared.setCoins(coins: coins)
+            CacheData.shared.setFavouriteCoins()
             DispatchQueue.main.async {
                 complition()
             }
         }
     }
     
+    func featchData(complition: @escaping () -> ()) {
+        if CacheData.shared.coinsIsEmpty() {
+            updateCoinData {
+                complition()
+            }
+        }else {
+            CacheData.shared.setFavouriteCoins()
+            complition()
+        }
+    }
+    
     func numberOfRows() -> Int {
-        searchTextIsEmpty ? coins.count : filteredCoins.count
+        searchTextIsEmpty ? CacheData.shared.countFavouriteCoins() : CacheData.shared.countFilteredCoins()
     }
     
     func cellViewModel(at indexPath: IndexPath) -> (CryptoTableViewCellViewModelProtocol) {
         if searchTextIsEmpty {
-            let coin = coins[indexPath.row]
+            let coin = CacheData.shared.getFavouriteCoin(at: indexPath)
             return CryptoTableViewCellViewModel(coin: coin)
         }else {
-            let coin = filteredCoins[indexPath.row]
+            let coin = CacheData.shared.getFilteredCoin(at: indexPath)
             return CryptoTableViewCellViewModel(coin: coin)
         }
     }
     
     func detailViewModel(at indexPath: IndexPath) -> (DetailCoinViewControllerViewModelProtocol) {
         if searchTextIsEmpty {
-            let coin = coins[indexPath.row]
+            let coin = CacheData.shared.getFavouriteCoin(at: indexPath)
             return DetailCoinViewControllerViewModel(coin: coin)
         }else {
-            let coin = filteredCoins[indexPath.row]
+            let coin = CacheData.shared.getFilteredCoin(at: indexPath)
             return DetailCoinViewControllerViewModel(coin: coin)
         }
     }
     
     func filterCoinsForSearchText(searchText: String) {
         searchTextIsEmpty = searchText.isEmpty
-        filteredCoins = coins.filter({ coin in
+        let filteredCoins = CacheData.shared.getFavouriteCoins().filter({ coin in
             coin.name.lowercased().contains(searchText.lowercased())
         })
         DispatchQueue.main.async { [unowned self] in
+            CacheData.shared.setFilteredCoins(filteredCoins: filteredCoins)
             viewModelDidChange?()
         }
     }

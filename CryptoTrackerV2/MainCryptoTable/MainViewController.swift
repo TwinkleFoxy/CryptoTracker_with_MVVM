@@ -15,6 +15,7 @@ class MainViewController: UITableViewController {
         return refreshControl
     }()
     
+    
     private let searchController: UISearchController = {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchBar.placeholder = "Search"
@@ -45,8 +46,8 @@ class MainViewController: UITableViewController {
     
     private func setupUI() {
         tableView.register(UINib(nibName: "Cell", bundle: nil), forCellReuseIdentifier: "cell")
-        tableView.refreshControl = refreshControl
-        refrashControl.addTarget(self, action: #selector(updateDataByRefrashControl), for: .valueChanged)
+        tableView.refreshControl = refrashControl
+        refrashControl.addTarget(self, action: #selector(updateDataByRefreshControl), for: .valueChanged)
         searchController.searchResultsUpdater = self
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
@@ -65,8 +66,10 @@ class MainViewController: UITableViewController {
     }
     
     // MARK: - Func for uplade tableView from refrashControl Not worked !!!
-    @objc func updateDataByRefrashControl() {
-        requestUpdateForTable()
+    @objc func updateDataByRefreshControl() {
+        viewModel.updateCoinData { [unowned self] in
+            tableView.reloadData()
+        }
         refrashControl.endRefreshing()
     }
     

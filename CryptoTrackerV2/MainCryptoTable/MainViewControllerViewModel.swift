@@ -9,11 +9,9 @@ import Foundation
 import UIKit
 
 protocol MainViewControllerViewModelProtocol: AnyObject {
-    var coins: [Coin] { get }
-    var filteredCoins: [Coin] { get }
-    var searchTextIsEmpty: Bool { get }
     var viewModelDidChange: (() -> ())? { get set }
     func featchData(complition: @escaping () -> ())
+    func updateCoinData(complition: @escaping () -> ())
     func numberOfRows() -> Int
     func cellViewModel(at indexPath: IndexPath) -> CryptoTableViewCellViewModelProtocol
     func detailViewModel(at indexPath: IndexPath) -> DetailCoinViewControllerViewModelProtocol
@@ -21,41 +19,47 @@ protocol MainViewControllerViewModelProtocol: AnyObject {
 }
 
 class MainViewControllerViewModel: MainViewControllerViewModelProtocol {
-    internal var coins: [Coin] = []
-    internal var filteredCoins: [Coin] = []
-    internal var searchTextIsEmpty = true
+    private var searchTextIsEmpty = true
     
     var viewModelDidChange: (() -> ())?
     
-    func featchData(complition: @escaping () -> ()) {
-        NetworkManager.shared.fetchData { [unowned self] coins in
-            self.coins = coins
+    func updateCoinData(complition: @escaping () -> ()) {
+        NetworkManager.shared.fetchData { coins in
+            CacheData.shared.setCoins(coins: coins)
             DispatchQueue.main.async {
                 complition()
             }
         }
     }
     
+    func featchData(complition: @escaping () -> ()) {
+        if CacheData.shared.coinsIsEmpty() {
+            updateCoinData {
+                complition()
+            }
+        }
+    }
+    
     func numberOfRows() -> Int {
-        searchTextIsEmpty ? coins.count : filteredCoins.count
+        searchTextIsEmpty ? CacheData.shared.countCoins() : CacheData.shared.countFilteredCoins()
     }
     
     func cellViewModel(at indexPath: IndexPath) -> CryptoTableViewCellViewModelProtocol {
         if searchTextIsEmpty {
-            let coin = coins[indexPath.row]
+            let coin = CacheData.shared.getCoin(at: indexPath)
             return CryptoTableViewCellViewModel(coin: coin)
         } else {
-            let coin = filteredCoins[indexPath.row]
+            let coin = CacheData.shared.getFilteredCoin(at: indexPath)
             return CryptoTableViewCellViewModel(coin: coin)
         }
     }
     
     func detailViewModel(at indexPath: IndexPath) -> DetailCoinViewControllerViewModelProtocol {
         if searchTextIsEmpty {
-            let coin = coins[indexPath.row]
+            let coin = CacheData.shared.getCoin(at: indexPath)
             return DetailCoinViewControllerViewModel(coin: coin)
         }else {
-            let coin = filteredCoins[indexPath.row]
+            let coin = CacheData.shared.getFilteredCoin(at: indexPath)
             return DetailCoinViewControllerViewModel(coin: coin)
         }
         
@@ -63,9 +67,13 @@ class MainViewControllerViewModel: MainViewControllerViewModelProtocol {
     
     func filterCoinsForSearchText(searchText: String) {
         searchTextIsEmpty = searchText.isEmpty
-        filteredCoins = coins.filter({ coin in
+        let filteredCoins = CacheData.shared.getCoins().filter({ coin in
             return coin.name.lowercased().contains(searchText.lowercased())
         })
-        viewModelDidChange?()
+        DispatchQueue.main.async { [unowned self] in
+            CacheData.shared.setFilteredCoins(filteredCoins: filteredCoins)
+            viewModelDidChange?()
+        }
+        
     }
 }
