@@ -9,6 +9,7 @@ import Foundation
 
 protocol DetailCoinViewControllerViewModelProtocol: AnyObject {
     init(coin: Coin)
+    var imageData: Data { get }
     var coinName: String { get }
     var coinPrice: String { get }
     var marketCap: String { get }
@@ -30,6 +31,10 @@ class DetailCoinViewControllerViewModel: DetailCoinViewControllerViewModelProtoc
     let coin: Coin
     
     var viewModelDidChange: ((DetailCoinViewControllerViewModelProtocol) -> ())?
+    
+    var imageData: Data {
+       ImageManager.shared.fetchImageData(from: coin.image) ?? Data()
+    }
     
     var coinName: String {
         "Name: \(coin.name)"
