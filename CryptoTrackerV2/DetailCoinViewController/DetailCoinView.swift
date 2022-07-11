@@ -172,6 +172,7 @@ class DetailCoinView: UIView {
         //navigationItem.rightBarButtonItem = barButtonItem
         barButtonItem.action = #selector(favoritButtonPressed)
         barButtonItem.target = self
+        clouseButton.addTarget(self, action: #selector(clouseView), for: .touchDown)
         
         let imageSize = 0.8
         imageCoinView.image = UIImage(data: viewModel.imageData)

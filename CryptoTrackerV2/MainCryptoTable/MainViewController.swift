@@ -17,6 +17,12 @@ class MainViewController: UIViewController {
     
     private var tableView: UITableView!
     
+    private let visualEffectView: UIVisualEffectView = {
+        let visualEffectView = UIVisualEffectView()
+        visualEffectView.effect = UIBlurEffect(style: .systemMaterial)
+        return visualEffectView
+    }()
+    
     private let refrashControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.tintColor = .systemPink
@@ -37,7 +43,7 @@ class MainViewController: UIViewController {
         detailCoinView.backgroundColor = .white
         detailCoinView.layer.cornerRadius = 10
         detailCoinView.clipsToBounds = true
-        //detailCoinView.translatesAutoresizingMaskIntoConstraints = false
+//        detailCoinView.translatesAutoresizingMaskIntoConstraints = false
         return detailCoinView
     }()
     
@@ -60,7 +66,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        
+//        setupConstraints()
         // Do any additional setup after loading the view.
     }
     
@@ -81,6 +87,7 @@ class MainViewController: UIViewController {
         tableView.frame = CGRect(x: searchController.searchBar.accessibilityFrame.minX,
                                  y: searchController.searchBar.frame.height,
                                  width: view.frame.width, height: view.frame.height)
+        visualEffectView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         view.backgroundColor = .white
         
         tableView.register(UINib(nibName: "Cell", bundle: nil), forCellReuseIdentifier: "cell")
@@ -100,11 +107,12 @@ class MainViewController: UIViewController {
     //MARK: - Setup Constraints
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: searchController.searchBar.safeAreaLayoutGuide.bottomAnchor),
+            tableView.topAnchor.constraint(equalTo: searchController.searchBar.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            //tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
+
     }
     
     private func requestUpdateForTable() {
@@ -151,6 +159,11 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         
         //let uiimage = UIImageView(frame: CGRect(x: 100, y: 100, width: 100, height: 100))
         //uiimage.image = UIImage(systemName: "star")
+        
+        
+        searchController.searchBar.isHidden = true
+        tabBarController?.tabBar.isHidden = true
+        view.addSubview(visualEffectView)
         view.addSubview(detailUIView)
         
 //        NSLayoutConstraint.activate([
