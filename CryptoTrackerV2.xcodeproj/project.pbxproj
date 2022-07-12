@@ -13,7 +13,9 @@
 		88036E662850FCD000896B16 /* Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88036E652850FCD000896B16 /* Cell.xib */; };
 		88036E682850FD7700896B16 /* CryptoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88036E672850FD7700896B16 /* CryptoTableViewCell.swift */; };
 		88036E6A285112F700896B16 /* DetailCoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88036E69285112F700896B16 /* DetailCoinViewController.swift */; };
-		882ABDF22874733100C86433 /* DetailCoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882ABDF12874733100C86433 /* DetailCoinView.swift */; };
+		8820C9E7287D970000FE4C81 /* BackOfCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8820C9E6287D970000FE4C81 /* BackOfCardView.swift */; };
+		8820C9E9287D970300FE4C81 /* FaceCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8820C9E8287D970300FE4C81 /* FaceCardView.swift */; };
+		8882BE25287D94920061A2FD /* DetailCoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8882BE24287D94920061A2FD /* DetailCoinView.swift */; };
 		88F1BC1F2874526E0005AA95 /* CacheData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F1BC1E2874526E0005AA95 /* CacheData.swift */; };
 		88F25A6C282E6A7400EE8B0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F25A6B282E6A7400EE8B0F /* AppDelegate.swift */; };
 		88F25A6E282E6A7400EE8B0F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F25A6D282E6A7400EE8B0F /* SceneDelegate.swift */; };
@@ -35,7 +37,9 @@
 		88036E652850FCD000896B16 /* Cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Cell.xib; sourceTree = "<group>"; };
 		88036E672850FD7700896B16 /* CryptoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoTableViewCell.swift; sourceTree = "<group>"; };
 		88036E69285112F700896B16 /* DetailCoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCoinViewController.swift; sourceTree = "<group>"; };
-		882ABDF12874733100C86433 /* DetailCoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCoinView.swift; sourceTree = "<group>"; };
+		8820C9E6287D970000FE4C81 /* BackOfCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackOfCardView.swift; sourceTree = "<group>"; };
+		8820C9E8287D970300FE4C81 /* FaceCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceCardView.swift; sourceTree = "<group>"; };
+		8882BE24287D94920061A2FD /* DetailCoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCoinView.swift; sourceTree = "<group>"; };
 		88F1BC1E2874526E0005AA95 /* CacheData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheData.swift; sourceTree = "<group>"; };
 		88F25A68282E6A7400EE8B0F /* CryptoTrackerV2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoTrackerV2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88F25A6B282E6A7400EE8B0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +81,15 @@
 				88036E1D2850CA2600896B16 /* MainTabBarController.swift */,
 			);
 			path = TabBarController;
+			sourceTree = "<group>";
+		};
+		8820C9EA287D971100FE4C81 /* CardView */ = {
+			isa = PBXGroup;
+			children = (
+				8820C9E8287D970300FE4C81 /* FaceCardView.swift */,
+				8820C9E6287D970000FE4C81 /* BackOfCardView.swift */,
+			);
+			path = CardView;
 			sourceTree = "<group>";
 		};
 		88F1BC1D287452560005AA95 /* CachData */ = {
@@ -134,7 +147,8 @@
 		88F25A88282E797E00EE8B0F /* DetailCoinViewController */ = {
 			isa = PBXGroup;
 			children = (
-				882ABDF12874733100C86433 /* DetailCoinView.swift */,
+				8820C9EA287D971100FE4C81 /* CardView */,
+				8882BE24287D94920061A2FD /* DetailCoinView.swift */,
 				88036E69285112F700896B16 /* DetailCoinViewController.swift */,
 				88F25AA128302CF700EE8B0F /* DetailCoinViewControllerViewModel.swift */,
 			);
@@ -266,12 +280,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				88F25A9E28301AE300EE8B0F /* MainViewControllerViewModel.swift in Sources */,
+				8820C9E7287D970000FE4C81 /* BackOfCardView.swift in Sources */,
 				88F25AA42830395700EE8B0F /* DataManager.swift in Sources */,
 				88036E1E2850CA2600896B16 /* MainTabBarController.swift in Sources */,
 				88036E19284F97C700896B16 /* FavoritCoinsViewControllerViewModel.swift in Sources */,
 				88036E6A285112F700896B16 /* DetailCoinViewController.swift in Sources */,
 				88F25A90282E7BFA00EE8B0F /* NetworkManager.swift in Sources */,
-				882ABDF22874733100C86433 /* DetailCoinView.swift in Sources */,
+				8882BE25287D94920061A2FD /* DetailCoinView.swift in Sources */,
 				88F25A6C282E6A7400EE8B0F /* AppDelegate.swift in Sources */,
 				88036E682850FD7700896B16 /* CryptoTableViewCell.swift in Sources */,
 				88F25AA028301ED400EE8B0F /* CryptoTableViewCellViewModel.swift in Sources */,
@@ -279,6 +294,7 @@
 				88F1BC1F2874526E0005AA95 /* CacheData.swift in Sources */,
 				88F25A92282E7C4400EE8B0F /* ImageManager.swift in Sources */,
 				88036E622850F92C00896B16 /* MainViewController.swift in Sources */,
+				8820C9E9287D970300FE4C81 /* FaceCardView.swift in Sources */,
 				88F25A6E282E6A7400EE8B0F /* SceneDelegate.swift in Sources */,
 				88F25A94282E81A800EE8B0F /* Coin.swift in Sources */,
 			);

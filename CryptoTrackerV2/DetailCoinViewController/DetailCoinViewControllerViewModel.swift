@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol DetailCoinViewControllerViewModelProtocol: AnyObject {
+protocol DetailCoinViewViewModelProtocol: AnyObject {
     init(coin: Coin)
     var imageData: Data { get }
     var coinName: String { get }
@@ -19,18 +19,18 @@ protocol DetailCoinViewControllerViewModelProtocol: AnyObject {
     var low24h: String { get }
     var priceChange24h: String { get }
     var isFavorit: Bool { get }
-    var viewModelDidChange: ((DetailCoinViewControllerViewModelProtocol) -> ())? { get set }
+    var viewModelDidChange: ((DetailCoinViewViewModelProtocol) -> ())? { get set }
     func favoritToggle()
 }
 
-class DetailCoinViewControllerViewModel: DetailCoinViewControllerViewModelProtocol {
+class DetailCoinViewControllerViewModel: DetailCoinViewViewModelProtocol {
     required init(coin: Coin) {
         self.coin = coin
     }
     
     let coin: Coin
     
-    var viewModelDidChange: ((DetailCoinViewControllerViewModelProtocol) -> ())?
+    var viewModelDidChange: ((DetailCoinViewViewModelProtocol) -> ())?
     
     var imageData: Data {
        ImageManager.shared.fetchImageData(from: coin.image) ?? Data()

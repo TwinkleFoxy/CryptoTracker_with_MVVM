@@ -13,6 +13,7 @@ class CacheData {
     private var coins: [Coin] = []
     private var favouriteCoins: [Coin] = []
     private var filteredCoins: [Coin] = []
+    private var searchText = ""
     
     private init() {
         
@@ -77,5 +78,14 @@ class CacheData {
     
     func getFilteredCoin(at indexPath: IndexPath) -> Coin{
         return filteredCoins[indexPath.row]
+    }
+    
+    //MARK: - Work with search text
+    func setSearchText(searchText: String) {
+        self.searchText = searchText
+    }
+    
+    func getSearchText() -> String {
+        return searchText
     }
 }

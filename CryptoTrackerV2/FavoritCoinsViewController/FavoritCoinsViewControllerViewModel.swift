@@ -51,7 +51,7 @@ class FavoritCoinsViewControllerViewModel: FavoritCoinsViewControllerViewModelPr
         }
     }
     
-    func detailViewModel(at indexPath: IndexPath) -> (DetailCoinViewControllerViewModelProtocol) {
+    func detailViewModel(at indexPath: IndexPath) -> (DetailCoinViewViewModelProtocol) {
         if searchTextIsEmpty {
             let coin = CacheData.shared.getFavouriteCoin(at: indexPath)
             return DetailCoinViewControllerViewModel(coin: coin)

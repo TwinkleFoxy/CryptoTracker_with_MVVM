@@ -1,13 +1,23 @@
 //
-//  DetailCoinViewController.swift
+//  BackOfCard.swift
 //  CryptoTrackerV2
 //
-//  Created by Алексей Однолько on 08.06.2022.
+//  Created by Алексей Однолько on 09.07.2022.
 //
 
 import UIKit
 
-class DetailCoinViewController: UIViewController {
+class BackOfCardView: UIView {
+    
+    private let imageCoinView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.alpha = 0.35
+        imageView.contentMode = .scaleAspectFit
+        imageView.layer.cornerRadius = 15
+        imageView.clipsToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
     
     private let coinNameLabel: UILabel = {
         let label = UILabel()
@@ -23,7 +33,6 @@ class DetailCoinViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
     
     
     private let marketStatusTextLabel: UILabel = {
@@ -75,20 +84,14 @@ class DetailCoinViewController: UIViewController {
         return label
     }()
     
-    private let favoritButton: UIButton = {
-        let favoritButton = UIButton()
-        favoritButton.translatesAutoresizingMaskIntoConstraints = false
-        favoritButton.setImage(UIImage(systemName: "star"), for: .normal)
-        return favoritButton
-    }()
     
-    
-    
+    //MARK: - Stacks View
     private let mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.alignment = .leading
         stackView.distribution = .equalCentering
+        stackView.spacing = 20
         stackView.contentMode = .scaleAspectFill
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
@@ -101,16 +104,6 @@ class DetailCoinViewController: UIViewController {
         stackView.distribution = .fillProportionally
         stackView.spacing = 16
         stackView.contentMode = .scaleAspectFill
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
-    
-    private let stackViewMidle: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.alignment = .fill
-        stackView.distribution = .fill
-        stackView.contentMode = .scaleAspectFit
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -135,45 +128,26 @@ class DetailCoinViewController: UIViewController {
         return stackView
     }()
     
-    private let barButtonItem: UIBarButtonItem = {
-        let barButtonItem = UIBarButtonItem()
-        barButtonItem.image = UIImage(systemName: "star")
-        return barButtonItem
-    }()
+    
+    //MARK: - DetailCoinView
+    unowned var viewModel: DetailCoinViewViewModelProtocol!
     
     
-    //MARK: - DetailCoinViewController
-    var viewModel: DetailCoinViewViewModelProtocol!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    // Only override draw() if you perform custom drawing.
+    // An empty implementation adversely affects performance during animation.
+    override func draw(_ rect: CGRect) {
         setupUI()
         setupSubView()
-        // Do any additional setup after loading the view.
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setFavoritStatus(isFavorit: viewModel.isFavorit)
-    }
-    
-    override func updateViewConstraints() {
-        super.updateViewConstraints()
+        setupFrame()
         setupConstraints()
+        // Drawing code
     }
+    
     
     //MARK: - SetupUI
     private func setupUI(){
-        view.backgroundColor = .white
-        navigationItem.rightBarButtonItem = barButtonItem
-        barButtonItem.action = #selector(favoritButtonPressed)
-        barButtonItem.target = self
-        
+        imageCoinView.image = UIImage(data: viewModel.imageData)
         coinNameLabel.text = viewModel.coinName
-        setFavoritStatus(isFavorit: viewModel.isFavorit)
-        viewModel.viewModelDidChange = { [unowned self] viewModel in
-            self.setFavoritStatus(isFavorit: viewModel.isFavorit)
-        }
         coinPriceLabel.text = viewModel.coinPrice
         marketCapLabel.text = viewModel.marketCap
         curculatinSupply.text = viewModel.curculatinSupply
@@ -183,12 +157,22 @@ class DetailCoinViewController: UIViewController {
         priceChange24h.text = viewModel.priceChange24h
     }
     
+    //MARK: - Setup Frame
+    func setupFrame() {
+        let imageSize = 0.8
+        imageCoinView.frame = CGRect(x: (frame.maxX * (1 - imageSize)) / 2,
+                                     y: 0,
+                                     width: frame.width * imageSize,
+                                     height: frame.height * imageSize)
+    }
+    
     //MARK: - Setup SubView
     private func setupSubView() {
-        view.addSubview(mainStackView)
+        addSubview(imageCoinView)
+        
+        addSubview(mainStackView)
         
         mainStackView.addArrangedSubview(stackViewTop)
-        mainStackView.addArrangedSubview(stackViewMidle)
         mainStackView.addArrangedSubview(stackViewBottom)
         
         stackViewTop.addArrangedSubview(coinNameLabel)
@@ -203,44 +187,24 @@ class DetailCoinViewController: UIViewController {
         stackViewBottomNested.addArrangedSubview(height24h)
         stackViewBottomNested.addArrangedSubview(low24h)
         stackViewBottomNested.addArrangedSubview(priceChange24h)
-        
     }
     
     //MARK: - Setup Constraints
     private func setupConstraints() {
+        
         NSLayoutConstraint.activate([
-            mainStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            mainStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            mainStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            mainStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
+            imageCoinView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
+            imageCoinView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            imageCoinView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            imageCoinView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 10)
         ])
         
         NSLayoutConstraint.activate([
-            stackViewMidle.topAnchor.constraint(equalTo: stackViewTop.bottomAnchor, constant: 20),
-            stackViewMidle.leadingAnchor.constraint(equalTo: mainStackView.leadingAnchor),
-            stackViewMidle.trailingAnchor.constraint(equalTo: mainStackView.trailingAnchor),
-            stackViewMidle.bottomAnchor.constraint(equalTo: stackViewBottom.topAnchor, constant: -20)
+            mainStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
+            mainStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            mainStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            mainStackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -10)
         ])
         
     }
-    
-    
-    @objc func favoritButtonPressed() {
-        viewModel.favoritToggle()
-    }
-    
-    private func setFavoritStatus(isFavorit: Bool) {
-        barButtonItem.image = viewModel.isFavorit ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
-    }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

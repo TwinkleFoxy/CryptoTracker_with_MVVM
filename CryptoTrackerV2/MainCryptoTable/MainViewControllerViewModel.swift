@@ -14,7 +14,7 @@ protocol MainViewControllerViewModelProtocol: AnyObject {
     func updateCoinData(complition: @escaping () -> ())
     func numberOfRows() -> Int
     func cellViewModel(at indexPath: IndexPath) -> CryptoTableViewCellViewModelProtocol
-    func detailViewModel(at indexPath: IndexPath) -> DetailCoinViewControllerViewModelProtocol
+    func detailViewModel(at indexPath: IndexPath) -> DetailCoinViewViewModelProtocol
     func filterCoinsForSearchText(searchText: String)
 }
 
@@ -54,7 +54,7 @@ class MainViewControllerViewModel: MainViewControllerViewModelProtocol {
         }
     }
     
-    func detailViewModel(at indexPath: IndexPath) -> DetailCoinViewControllerViewModelProtocol {
+    func detailViewModel(at indexPath: IndexPath) -> DetailCoinViewViewModelProtocol {
         if searchTextIsEmpty {
             let coin = CacheData.shared.getCoin(at: indexPath)
             return DetailCoinViewControllerViewModel(coin: coin)
