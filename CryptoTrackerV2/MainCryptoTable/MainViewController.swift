@@ -23,7 +23,7 @@ class MainViewController: UIViewController {
     
     private let visualEffectView: UIVisualEffectView = {
         let visualEffectView = UIVisualEffectView()
-        visualEffectView.effect = UIBlurEffect(style: .systemMaterial)
+        visualEffectView.effect = UIBlurEffect(style: .systemMaterialDark)
         return visualEffectView
     }()
     
@@ -135,7 +135,7 @@ class MainViewController: UIViewController {
     
     private func createDetailCoinView(viewModel: DetailCoinViewViewModelProtocol) -> DetailCoinView {
         let indentX = 0.9
-        let indentY = 0.7
+        let indentY = 0.70
         let detailCoinView = DetailCoinView()
         detailCoinView.previousTableViewController = self
         detailCoinView.backgroundColor = .white
@@ -186,6 +186,7 @@ extension MainViewController: BackGroundBlurEffectProtocol {
     func addBackGroundBlurEffect() {
         searchController.searchBar.isHidden = true
         navigationItem.hidesSearchBarWhenScrolling = true
+        tabBarController?.tabBar.isHidden = true
         view.addSubview(visualEffectView)
     }
     
@@ -196,6 +197,7 @@ extension MainViewController: BackGroundBlurEffectProtocol {
         navigationItem.hidesSearchBarWhenScrolling = false
         visualEffectView.removeFromSuperview()
         searchController.searchBar.isHidden = false
+        tabBarController?.tabBar.isHidden = false
     }
 }
 
