@@ -31,7 +31,7 @@ class CryptoTableViewCellViewModel: CryptoTableViewCellViewModelProtocol {
     }
     
     var price: String {
-        String(describing: coin.current_price)
+        String("\(coin.current_price) $")
     }
     
     required init(coin: Coin) {

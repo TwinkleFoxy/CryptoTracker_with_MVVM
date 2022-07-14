@@ -45,7 +45,7 @@ class DetailCoinViewControllerViewModel: DetailCoinViewViewModelProtocol {
     }
     
     var marketCap: String {
-        "Market Cap: \(coin.market_cap)"
+        "Market Cap: \(coin.market_cap) $"
     }
     
     var curculatinSupply: String {
@@ -59,15 +59,15 @@ class DetailCoinViewControllerViewModel: DetailCoinViewViewModelProtocol {
     }
     
     var height24h: String {
-        "Height 24h: \(coin.high_24h)"
+        "Height 24h: \(coin.high_24h) $"
     }
     
     var low24h: String {
-        "Low 24h: \(coin.low_24h)"
+        "Low 24h: \(coin.low_24h) $"
     }
     
     var priceChange24h: String {
-        "Price Change 24h: \(coin.price_change_percentage_24h)"
+        "Price Change 24h: \(coin.price_change_percentage_24h) %"
     }
     
     var isFavorit: Bool {

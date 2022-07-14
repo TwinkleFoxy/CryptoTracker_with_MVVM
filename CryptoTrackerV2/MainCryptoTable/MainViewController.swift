@@ -13,13 +13,13 @@ protocol BackGroundBlurEffectProtocol: AnyObject {
 
 class MainViewController: UIViewController {
     
-    private let tableViewController: UITableViewController = {
-        let tableViewController = UITableViewController()
-        tableViewController.tableView.translatesAutoresizingMaskIntoConstraints = false
-        return tableViewController
+    lazy private var collectionView: UICollectionView = {
+        let collectionViewFlowLayout = UICollectionViewFlowLayout()
+        collectionViewFlowLayout.minimumLineSpacing = 10
+        collectionViewFlowLayout.scrollDirection = .vertical
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewFlowLayout)
+        return collectionView
     }()
-    
-    private var tableView: UITableView!
     
     private let visualEffectView: UIVisualEffectView = {
         let visualEffectView = UIVisualEffectView()
@@ -49,9 +49,11 @@ class MainViewController: UIViewController {
         }
     }
     
+    private let minimumLineSpacing: CGFloat = 10
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        tableView = tableViewController.tableView
+        
     }
     
     required init?(coder: NSCoder) {
@@ -61,7 +63,7 @@ class MainViewController: UIViewController {
     //MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTableView()
+        setupCollectionView()
         setupUI()
         // Do any additional setup after loading the view.
     }
@@ -84,7 +86,7 @@ class MainViewController: UIViewController {
         
         visualEffectView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         
-        tableView.refreshControl = refrashControl
+        collectionView.refreshControl = refrashControl
         refrashControl.addTarget(self, action: #selector(updateDataByRefreshControl), for: .valueChanged)
         searchController.searchResultsUpdater = self
         navigationItem.searchController = searchController
@@ -92,7 +94,7 @@ class MainViewController: UIViewController {
         
         viewModel.viewModelDidChange = { [unowned self] in
             DispatchQueue.main.async {
-                tableView.reloadData()
+                collectionView.reloadData()
             }
         }
     }
@@ -100,35 +102,33 @@ class MainViewController: UIViewController {
     //MARK: - Setup Constraints
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: searchController.searchBar.safeAreaLayoutGuide.bottomAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            collectionView.topAnchor.constraint(equalTo: searchController.searchBar.safeAreaLayoutGuide.bottomAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
     
-    //MARK: - Setup TableView
-    private func setupTableView() {
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(tableView)
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.frame = CGRect(x: searchController.searchBar.accessibilityFrame.minX,
-                                 y: searchController.searchBar.frame.height,
-                                 width: view.frame.width, height: view.frame.height)
-        tableView.register(UINib(nibName: "Cell", bundle: nil), forCellReuseIdentifier: "cell")
+    //MARK: - Setup CollectionView
+    private func setupCollectionView() {
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(collectionView)
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: minimumLineSpacing, bottom: 0, right: minimumLineSpacing)
+        collectionView.register(UINib(nibName: "CollectionCell", bundle: nil), forCellWithReuseIdentifier: "CardCollectionCell")
     }
     
     private func requestUpdateForTable() {
         viewModel.featchData { [unowned self] in
-            tableView.reloadData()
+            collectionView.reloadData()
         }
     }
     
     // MARK: - Func for uplade tableView from refrashControl
     @objc func updateDataByRefreshControl() {
         viewModel.updateCoinData { [unowned self] in
-            tableView.reloadData()
+            collectionView.reloadData()
         }
         refrashControl.endRefreshing()
     }
@@ -136,14 +136,18 @@ class MainViewController: UIViewController {
     private func createDetailCoinView(viewModel: DetailCoinViewViewModelProtocol) -> DetailCoinView {
         let indentX = 0.9
         let indentY = 0.70
+        let detailViewX = view.frame.maxX * (1 - indentX) / 2
+        let detailViewY = view.frame.maxY * (1 - indentY) / 2
+        let detailViewWidth = view.frame.width * indentX
+        let detailViewHeight = detailViewWidth * 1.4
         let detailCoinView = DetailCoinView()
         detailCoinView.previousTableViewController = self
         detailCoinView.backgroundColor = .white
         detailCoinView.layer.cornerRadius = 10
         detailCoinView.clipsToBounds = true
-        detailCoinView.frame = CGRect(x: view.frame.maxX * (1 - indentX) / 2,
-                                      y: view.frame.maxY * (1 - indentY) / 2,
-                                      width: view.frame.width * indentX, height: view.frame.height * indentY)
+        detailCoinView.frame = CGRect(x: detailViewX,
+                                      y: detailViewY,
+                                      width: detailViewWidth, height: detailViewHeight)
         detailCoinView.viewModel = viewModel
         detailCoinView.transform = CGAffineTransform(scaleX: 0.8, y: 1.2)
         return detailCoinView
@@ -153,22 +157,23 @@ class MainViewController: UIViewController {
 
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
-extension MainViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfRows()
+extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        viewModel.numberOfRows()
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CryptoTableViewCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CardCollectionCell", for: indexPath) as? CryptoCollectionViewCell else { return UICollectionViewCell() }
         cell.viewModel = viewModel.cellViewModel(at: indexPath)
         
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        let viewModel = viewModel.detailViewModel(at: indexPath)
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
         
+        let viewModel = viewModel.detailViewModel(at: indexPath)
         let detailCoinView = createDetailCoinView(viewModel: viewModel)
         
         addBackGroundBlurEffect()
@@ -177,6 +182,20 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut) {
             detailCoinView.transform = .identity
         }
+    }
+}
+
+extension MainViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let leftIndent = minimumLineSpacing
+        let rightIndent = minimumLineSpacing
+        let lineIndent = minimumLineSpacing
+        let numberCellInLine: CGFloat = 2
+        
+        let widthCell = (view.safeAreaLayoutGuide.layoutFrame.width - leftIndent - rightIndent - (lineIndent * (numberCellInLine - 1))) / numberCellInLine
+                         let heightCell = widthCell * 1.4
+        return CGSize(width: widthCell, height: heightCell)
     }
 }
 

@@ -70,12 +70,6 @@
                     <constraint firstAttribute="bottom" secondItem="hSh-8p-nfm" secondAttribute="bottom" priority="999" constant="10" id="qmZ-Dq-pXn"/>
                 </constraints>
             </tableViewCellContentView>
-            <connections>
-                <outlet property="imageCoinView" destination="8An-QJ-7RR" id="1n7-l2-6BB"/>
-                <outlet property="nameCoinLabel" destination="Tj9-Lw-Q8k" id="teb-bo-Fp9"/>
-                <outlet property="priceChangePercentage24hLabel" destination="QSY-rA-rn2" id="bkL-zm-GTc"/>
-                <outlet property="priceCoinLabel" destination="ha5-cI-lH7" id="g9M-nd-59e"/>
-            </connections>
             <point key="canvasLocation" x="148" y="-171"/>
         </tableViewCell>
     </objects>

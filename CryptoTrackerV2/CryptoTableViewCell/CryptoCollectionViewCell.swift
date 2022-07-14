@@ -1,23 +1,19 @@
 //
-//  TableViewCellForMainTable.swift
+//  CryptoCollectionViewCell.swift
 //  CryptoTrackerV2
 //
-//  Created by Алексей Однолько on 13.05.2022.
+//  Created by Алексей Однолько on 14.07.2022.
 //
 
 import UIKit
 
-class CryptoTableViewCell: UITableViewCell {
-
+class CryptoCollectionViewCell: UICollectionViewCell {
+    
     @IBOutlet weak var imageCoinView: UIImageView!
     @IBOutlet weak var nameCoinLabel: UILabel!
     @IBOutlet weak var priceChangePercentage24hLabel: UILabel!
     @IBOutlet weak var priceCoinLabel: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
     
     var viewModel: CryptoTableViewCellViewModelProtocol! {
         didSet {
@@ -28,11 +24,15 @@ class CryptoTableViewCell: UITableViewCell {
             priceCoinLabel.text = viewModel.price
         }
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        layer.masksToBounds = false
+        layer.cornerRadius = 10
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.3
+        layer.shadowOffset = CGSize(width: 4, height: 8)
+        layer.shadowRadius = 3
     }
-
 }
