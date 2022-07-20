@@ -14,6 +14,11 @@
 		8820C9E7287D970000FE4C81 /* BackOfCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8820C9E6287D970000FE4C81 /* BackOfCardView.swift */; };
 		8820C9E9287D970300FE4C81 /* FaceCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8820C9E8287D970300FE4C81 /* FaceCardView.swift */; };
 		8882BE25287D94920061A2FD /* DetailCoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8882BE24287D94920061A2FD /* DetailCoinView.swift */; };
+		88AA580828847AB3001EC8FE /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AA580728847AB3001EC8FE /* CoreDataStack.swift */; };
+		88AA580A28847E5F001EC8FE /* DataManagerCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AA580928847E5F001EC8FE /* DataManagerCoreData.swift */; };
+		88AA585928848251001EC8FE /* CryptoTrackerV2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88AA585728848251001EC8FE /* CryptoTrackerV2.xcdatamodeld */; };
+		88AA585C2884841E001EC8FE /* CoinStatus+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AA585A2884841E001EC8FE /* CoinStatus+CoreDataClass.swift */; };
+		88AA585D2884841E001EC8FE /* CoinStatus+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AA585B2884841E001EC8FE /* CoinStatus+CoreDataProperties.swift */; };
 		88D6D886287F65BD008E6407 /* CryptoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D6D885287F65BD008E6407 /* CryptoCollectionViewCell.swift */; };
 		88D6D888287F65D8008E6407 /* CollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88D6D887287F65D8008E6407 /* CollectionCell.xib */; };
 		88F1BC1F2874526E0005AA95 /* CacheData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F1BC1E2874526E0005AA95 /* CacheData.swift */; };
@@ -38,6 +43,11 @@
 		8820C9E6287D970000FE4C81 /* BackOfCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackOfCardView.swift; sourceTree = "<group>"; };
 		8820C9E8287D970300FE4C81 /* FaceCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceCardView.swift; sourceTree = "<group>"; };
 		8882BE24287D94920061A2FD /* DetailCoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCoinView.swift; sourceTree = "<group>"; };
+		88AA580728847AB3001EC8FE /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		88AA580928847E5F001EC8FE /* DataManagerCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerCoreData.swift; sourceTree = "<group>"; };
+		88AA585828848251001EC8FE /* CryptoTrackerV2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CryptoTrackerV2.xcdatamodel; sourceTree = "<group>"; };
+		88AA585A2884841E001EC8FE /* CoinStatus+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoinStatus+CoreDataClass.swift"; sourceTree = "<group>"; };
+		88AA585B2884841E001EC8FE /* CoinStatus+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoinStatus+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		88D6D885287F65BD008E6407 /* CryptoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoCollectionViewCell.swift; sourceTree = "<group>"; };
 		88D6D887287F65D8008E6407 /* CollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionCell.xib; sourceTree = "<group>"; };
 		88F1BC1E2874526E0005AA95 /* CacheData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheData.swift; sourceTree = "<group>"; };
@@ -90,6 +100,26 @@
 				8820C9E6287D970000FE4C81 /* BackOfCardView.swift */,
 			);
 			path = CardView;
+			sourceTree = "<group>";
+		};
+		88AA57C328847A14001EC8FE /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				88AA580D28848092001EC8FE /* Entites */,
+				88AA580928847E5F001EC8FE /* DataManagerCoreData.swift */,
+				88AA580728847AB3001EC8FE /* CoreDataStack.swift */,
+				88AA585728848251001EC8FE /* CryptoTrackerV2.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		88AA580D28848092001EC8FE /* Entites */ = {
+			isa = PBXGroup;
+			children = (
+				88AA585A2884841E001EC8FE /* CoinStatus+CoreDataClass.swift */,
+				88AA585B2884841E001EC8FE /* CoinStatus+CoreDataProperties.swift */,
+			);
+			path = Entites;
 			sourceTree = "<group>";
 		};
 		88F1BC1D287452560005AA95 /* CachData */ = {
@@ -193,6 +223,7 @@
 		88F25A8D282E7A7100EE8B0F /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				88AA57C328847A14001EC8FE /* CoreData */,
 				88F25A8F282E7BFA00EE8B0F /* NetworkManager.swift */,
 				88F25A91282E7C4400EE8B0F /* ImageManager.swift */,
 				88F25AA32830395700EE8B0F /* DataManager.swift */,
@@ -282,19 +313,24 @@
 			files = (
 				88F25A9E28301AE300EE8B0F /* MainViewControllerViewModel.swift in Sources */,
 				8820C9E7287D970000FE4C81 /* BackOfCardView.swift in Sources */,
+				88AA585C2884841E001EC8FE /* CoinStatus+CoreDataClass.swift in Sources */,
 				88F25AA42830395700EE8B0F /* DataManager.swift in Sources */,
+				88AA580828847AB3001EC8FE /* CoreDataStack.swift in Sources */,
 				88036E1E2850CA2600896B16 /* MainTabBarController.swift in Sources */,
+				88AA585D2884841E001EC8FE /* CoinStatus+CoreDataProperties.swift in Sources */,
 				88D6D886287F65BD008E6407 /* CryptoCollectionViewCell.swift in Sources */,
 				88036E19284F97C700896B16 /* FavoritCoinsViewControllerViewModel.swift in Sources */,
 				88F25A90282E7BFA00EE8B0F /* NetworkManager.swift in Sources */,
 				8882BE25287D94920061A2FD /* DetailCoinView.swift in Sources */,
 				88F25A6C282E6A7400EE8B0F /* AppDelegate.swift in Sources */,
+				88AA580A28847E5F001EC8FE /* DataManagerCoreData.swift in Sources */,
 				88F25AA028301ED400EE8B0F /* CryptoTableViewCellViewModel.swift in Sources */,
 				88F25AA228302CF700EE8B0F /* DetailCoinViewControllerViewModel.swift in Sources */,
 				88F1BC1F2874526E0005AA95 /* CacheData.swift in Sources */,
 				88F25A92282E7C4400EE8B0F /* ImageManager.swift in Sources */,
 				88036E622850F92C00896B16 /* MainViewController.swift in Sources */,
 				8820C9E9287D970300FE4C81 /* FaceCardView.swift in Sources */,
+				88AA585928848251001EC8FE /* CryptoTrackerV2.xcdatamodeld in Sources */,
 				88F25A6E282E6A7400EE8B0F /* SceneDelegate.swift in Sources */,
 				88F25A94282E81A800EE8B0F /* Coin.swift in Sources */,
 			);
@@ -508,6 +544,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		88AA585728848251001EC8FE /* CryptoTrackerV2.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				88AA585828848251001EC8FE /* CryptoTrackerV2.xcdatamodel */,
+			);
+			currentVersion = 88AA585828848251001EC8FE /* CryptoTrackerV2.xcdatamodel */;
+			path = CryptoTrackerV2.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 88F25A60282E6A7400EE8B0F /* Project object */;
 }

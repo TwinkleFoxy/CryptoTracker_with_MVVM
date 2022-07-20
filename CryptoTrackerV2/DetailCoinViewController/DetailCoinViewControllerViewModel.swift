@@ -72,10 +72,12 @@ class DetailCoinViewControllerViewModel: DetailCoinViewViewModelProtocol {
     
     var isFavorit: Bool {
         get {
-            DataManager.shared.getFavoriteStatus(for: coin.name)
+            //DataManager.shared.getFavoriteStatus(for: coin.name)
+            DataManagerCoreData.shared.getFavouriteStatus(for: coin.name)
         }
         set {
-            DataManager.shared.setFavoriteStatus(for: coin.name, with: newValue)
+            //DataManager.shared.setFavoriteStatus(for: coin.name, with: newValue)
+            DataManagerCoreData.shared.setFavouriteStatus(for: coin.name, with: newValue)
             viewModelDidChange?(self)
         }
     }

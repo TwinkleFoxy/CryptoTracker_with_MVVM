@@ -44,7 +44,8 @@ class CacheData {
     func setFavouriteCoins() {
         favouriteCoins.removeAll()
         coins.forEach { coin in
-            if DataManager.shared.getFavoriteStatus(for: coin.name) {
+            if DataManagerCoreData.shared.getFavouriteStatus(for: coin.name) {
+            //if DataManager.shared.getFavoriteStatus(for: coin.name) {
                 favouriteCoins.append(coin)
             }
         }
