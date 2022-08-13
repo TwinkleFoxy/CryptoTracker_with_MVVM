@@ -120,17 +120,31 @@ class MainViewController: UIViewController {
     }
     
     private func requestUpdateForTable() {
-        viewModel.featchData { [unowned self] in
-            collectionView.reloadData()
+        viewModel.featchData { [unowned self] internetStatus in
+            if internetStatus {
+                collectionView.reloadData()
+                refrashControl.endRefreshing()
+            } else {
+                present(AlertController.showAlertController(title: "Internet connection Error", message: "Check internet connection"), animated: true) {
+                    refrashControl.endRefreshing()
+                }
+            }
         }
+        refrashControl.endRefreshing()
     }
     
     // MARK: - Func for uplade tableView from refrashControl
     @objc func updateDataByRefreshControl() {
-        viewModel.updateCoinData { [unowned self] in
-            collectionView.reloadData()
+        viewModel.updateCoinData { [unowned self] internetStatus in
+            if internetStatus {
+                collectionView.reloadData()
+                refrashControl.endRefreshing()
+            } else {
+                present(AlertController.showAlertController(title: "Internet connection Error", message: "Check internet connection"), animated: true) {
+                    refrashControl.endRefreshing()
+                }
+            }
         }
-        refrashControl.endRefreshing()
     }
     
     private func createDetailCoinView(viewModel: DetailCoinViewViewModelProtocol) -> DetailCoinView {

@@ -15,26 +15,31 @@ class NetworkManager {
     
     private init() {}
     
-    func fetchData(completion: @escaping (_ coins: [Coin]) -> Void) {
-        guard let url = URL(string: api) else { return }
-
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data = data else {
-                print(error?.localizedDescription ?? "No Discription")
-                return
-            }
-
-            do {
-                let decoder = JSONDecoder()
-                //decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let courses = try decoder.decode([Coin].self, from: data)
-                DispatchQueue.main.async {
-                    completion(courses)
+    func fetchData(completion: @escaping (_ coins: [Coin], _ connectionStatus: Bool) -> Void) {
+        if InternetConnectionStatus.isConnectedToNetwork() {
+            guard let url = URL(string: api) else { return }
+            
+            URLSession.shared.dataTask(with: url) { data, _, error in
+                guard let data = data else {
+                    print(error?.localizedDescription ?? "No Discription")
+                    return
                 }
-            } catch let error {
-                print("Error serialization json", error)
-            }
-
-        }.resume()
+                
+                do {
+                    let decoder = JSONDecoder()
+                    //decoder.keyDecodingStrategy = .convertFromSnakeCase
+                    let courses = try decoder.decode([Coin].self, from: data)
+                    DispatchQueue.main.async {
+                        completion(courses, InternetConnectionStatus.isConnectedToNetwork())
+                    }
+                } catch let error {
+                    print("Error serialization json", error)
+                }
+                
+            }.resume()
+        } else {
+            let coin: [Coin] = []
+            completion(coin, InternetConnectionStatus.isConnectedToNetwork())
+        }
     }
 }

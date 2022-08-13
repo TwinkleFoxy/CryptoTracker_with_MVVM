@@ -16,24 +16,24 @@ class FavoritCoinsViewControllerViewModel: FavoritCoinsViewControllerViewModelPr
     
     var viewModelDidChange: (() -> ())?
     
-    func updateCoinData(complition: @escaping () -> ()) {
-        NetworkManager.shared.fetchData { coins in
-            CacheData.shared.setCoins(coins: coins)
+    func updateCoinData(complition: @escaping (_ internetStatus: Bool) -> ()) {
+        NetworkManager.shared.fetchData { coins, connectionStatus in
+            connectionStatus ? CacheData.shared.setCoins(coins: coins) : print("No internet connection")
             CacheData.shared.setFavouriteCoins()
             DispatchQueue.main.async {
-                complition()
+                complition(connectionStatus)
             }
         }
     }
     
-    func featchData(complition: @escaping () -> ()) {
+    func featchData(complition: @escaping (_ internetStatus: Bool) -> ()) {
         if CacheData.shared.coinsIsEmpty() {
-            updateCoinData {
-                complition()
+            updateCoinData { internetStatus in
+                complition(internetStatus)
             }
         }else {
             CacheData.shared.setFavouriteCoins()
-            complition()
+            complition(true)
         }
     }
     

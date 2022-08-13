@@ -10,8 +10,8 @@ import UIKit
 
 protocol MainViewControllerViewModelProtocol: AnyObject {
     var viewModelDidChange: (() -> ())? { get set }
-    func featchData(complition: @escaping () -> ())
-    func updateCoinData(complition: @escaping () -> ())
+    func featchData(complition: @escaping (_ internetStatus: Bool) -> ())
+    func updateCoinData(complition: @escaping (_ internetStatus: Bool) -> ())
     func numberOfRows() -> Int
     func cellViewModel(at indexPath: IndexPath) -> CryptoTableViewCellViewModelProtocol
     func detailViewModel(at indexPath: IndexPath) -> DetailCoinViewViewModelProtocol
@@ -23,19 +23,19 @@ class MainViewControllerViewModel: MainViewControllerViewModelProtocol {
     
     var viewModelDidChange: (() -> ())?
     
-    func updateCoinData(complition: @escaping () -> ()) {
-        NetworkManager.shared.fetchData { coins in
-            CacheData.shared.setCoins(coins: coins)
+    func updateCoinData(complition: @escaping (_ internetStatus: Bool) -> ()) {
+        NetworkManager.shared.fetchData { coins, internetStatus  in
+            internetStatus ? CacheData.shared.setCoins(coins: coins) : print("No internet connection")
             DispatchQueue.main.async {
-                complition()
+                complition(internetStatus)
             }
         }
     }
     
-    func featchData(complition: @escaping () -> ()) {
+    func featchData(complition: @escaping (_ internetStatus: Bool) -> ()) {
         if CacheData.shared.coinsIsEmpty() {
-            updateCoinData {
-                complition()
+            updateCoinData {internetStatus in
+                complition(internetStatus)
             }
         }
     }

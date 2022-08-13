@@ -19,6 +19,8 @@
 		88AA585928848251001EC8FE /* CryptoTrackerV2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88AA585728848251001EC8FE /* CryptoTrackerV2.xcdatamodeld */; };
 		88AA585C2884841E001EC8FE /* CoinStatus+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AA585A2884841E001EC8FE /* CoinStatus+CoreDataClass.swift */; };
 		88AA585D2884841E001EC8FE /* CoinStatus+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AA585B2884841E001EC8FE /* CoinStatus+CoreDataProperties.swift */; };
+		88AA58632888703E001EC8FE /* InternetConnectionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AA58622888703E001EC8FE /* InternetConnectionStatus.swift */; };
+		88AA5867288875E3001EC8FE /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AA5866288875E3001EC8FE /* AlertController.swift */; };
 		88D6D886287F65BD008E6407 /* CryptoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D6D885287F65BD008E6407 /* CryptoCollectionViewCell.swift */; };
 		88D6D888287F65D8008E6407 /* CollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88D6D887287F65D8008E6407 /* CollectionCell.xib */; };
 		88F1BC1F2874526E0005AA95 /* CacheData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F1BC1E2874526E0005AA95 /* CacheData.swift */; };
@@ -48,6 +50,8 @@
 		88AA585828848251001EC8FE /* CryptoTrackerV2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CryptoTrackerV2.xcdatamodel; sourceTree = "<group>"; };
 		88AA585A2884841E001EC8FE /* CoinStatus+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoinStatus+CoreDataClass.swift"; sourceTree = "<group>"; };
 		88AA585B2884841E001EC8FE /* CoinStatus+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoinStatus+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		88AA58622888703E001EC8FE /* InternetConnectionStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternetConnectionStatus.swift; sourceTree = "<group>"; };
+		88AA5866288875E3001EC8FE /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		88D6D885287F65BD008E6407 /* CryptoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoCollectionViewCell.swift; sourceTree = "<group>"; };
 		88D6D887287F65D8008E6407 /* CollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionCell.xib; sourceTree = "<group>"; };
 		88F1BC1E2874526E0005AA95 /* CacheData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheData.swift; sourceTree = "<group>"; };
@@ -224,9 +228,11 @@
 			isa = PBXGroup;
 			children = (
 				88AA57C328847A14001EC8FE /* CoreData */,
+				88AA58622888703E001EC8FE /* InternetConnectionStatus.swift */,
 				88F25A8F282E7BFA00EE8B0F /* NetworkManager.swift */,
 				88F25A91282E7C4400EE8B0F /* ImageManager.swift */,
 				88F25AA32830395700EE8B0F /* DataManager.swift */,
+				88AA5866288875E3001EC8FE /* AlertController.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -315,6 +321,7 @@
 				8820C9E7287D970000FE4C81 /* BackOfCardView.swift in Sources */,
 				88AA585C2884841E001EC8FE /* CoinStatus+CoreDataClass.swift in Sources */,
 				88F25AA42830395700EE8B0F /* DataManager.swift in Sources */,
+				88AA5867288875E3001EC8FE /* AlertController.swift in Sources */,
 				88AA580828847AB3001EC8FE /* CoreDataStack.swift in Sources */,
 				88036E1E2850CA2600896B16 /* MainTabBarController.swift in Sources */,
 				88AA585D2884841E001EC8FE /* CoinStatus+CoreDataProperties.swift in Sources */,
@@ -323,6 +330,7 @@
 				88F25A90282E7BFA00EE8B0F /* NetworkManager.swift in Sources */,
 				8882BE25287D94920061A2FD /* DetailCoinView.swift in Sources */,
 				88F25A6C282E6A7400EE8B0F /* AppDelegate.swift in Sources */,
+				88AA58632888703E001EC8FE /* InternetConnectionStatus.swift in Sources */,
 				88AA580A28847E5F001EC8FE /* DataManagerCoreData.swift in Sources */,
 				88F25AA028301ED400EE8B0F /* CryptoTableViewCellViewModel.swift in Sources */,
 				88F25AA228302CF700EE8B0F /* DetailCoinViewControllerViewModel.swift in Sources */,
