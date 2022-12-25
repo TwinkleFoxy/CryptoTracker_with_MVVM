@@ -7,35 +7,67 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		88036E19284F97C700896B16 /* FavoritCoinsViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88036E18284F97C700896B16 /* FavoritCoinsViewControllerViewModel.swift */; };
+		88036E1E2850CA2600896B16 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88036E1D2850CA2600896B16 /* MainTabBarController.swift */; };
+		88036E622850F92C00896B16 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88036E612850F92C00896B16 /* MainViewController.swift */; };
+		88036E662850FCD000896B16 /* Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88036E652850FCD000896B16 /* Cell.xib */; };
+		8820C9E7287D970000FE4C81 /* BackOfCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8820C9E6287D970000FE4C81 /* BackOfCardView.swift */; };
+		8820C9E9287D970300FE4C81 /* FaceCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8820C9E8287D970300FE4C81 /* FaceCardView.swift */; };
+		8882BE25287D94920061A2FD /* DetailCoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8882BE24287D94920061A2FD /* DetailCoinView.swift */; };
+		88AA580828847AB3001EC8FE /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AA580728847AB3001EC8FE /* CoreDataStack.swift */; };
+		88AA580A28847E5F001EC8FE /* DataManagerCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AA580928847E5F001EC8FE /* DataManagerCoreData.swift */; };
+		88AA585928848251001EC8FE /* CryptoTrackerV2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88AA585728848251001EC8FE /* CryptoTrackerV2.xcdatamodeld */; };
+		88AA585C2884841E001EC8FE /* CoinStatus+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AA585A2884841E001EC8FE /* CoinStatus+CoreDataClass.swift */; };
+		88AA585D2884841E001EC8FE /* CoinStatus+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AA585B2884841E001EC8FE /* CoinStatus+CoreDataProperties.swift */; };
+		88AA58632888703E001EC8FE /* InternetConnectionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AA58622888703E001EC8FE /* InternetConnectionStatus.swift */; };
+		88AA5867288875E3001EC8FE /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AA5866288875E3001EC8FE /* AlertController.swift */; };
+		88D6D886287F65BD008E6407 /* CryptoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D6D885287F65BD008E6407 /* CryptoCollectionViewCell.swift */; };
+		88D6D888287F65D8008E6407 /* CollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88D6D887287F65D8008E6407 /* CollectionCell.xib */; };
+		88F1BC1F2874526E0005AA95 /* CacheData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F1BC1E2874526E0005AA95 /* CacheData.swift */; };
 		88F25A6C282E6A7400EE8B0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F25A6B282E6A7400EE8B0F /* AppDelegate.swift */; };
 		88F25A6E282E6A7400EE8B0F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F25A6D282E6A7400EE8B0F /* SceneDelegate.swift */; };
-		88F25A73282E6A7400EE8B0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88F25A71282E6A7400EE8B0F /* Main.storyboard */; };
 		88F25A75282E6A7500EE8B0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88F25A74282E6A7500EE8B0F /* Assets.xcassets */; };
 		88F25A78282E6A7500EE8B0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88F25A76282E6A7500EE8B0F /* LaunchScreen.storyboard */; };
-		88F25A80282E6EE200EE8B0F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F25A7F282E6EE100EE8B0F /* MainViewController.swift */; };
-		88F25A82282E6EFD00EE8B0F /* DetailCoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F25A81282E6EFD00EE8B0F /* DetailCoinViewController.swift */; };
-		88F25A86282E732D00EE8B0F /* CryptoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F25A85282E732D00EE8B0F /* CryptoTableViewCell.swift */; };
 		88F25A90282E7BFA00EE8B0F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F25A8F282E7BFA00EE8B0F /* NetworkManager.swift */; };
 		88F25A92282E7C4400EE8B0F /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F25A91282E7C4400EE8B0F /* ImageManager.swift */; };
 		88F25A94282E81A800EE8B0F /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F25A93282E81A800EE8B0F /* Coin.swift */; };
-		88F25AC828327A3500EE8B0F /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F25AC728327A3500EE8B0F /* DataManager.swift */; };
+		88F25A9E28301AE300EE8B0F /* MainViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F25A9D28301AE200EE8B0F /* MainViewControllerViewModel.swift */; };
+		88F25AA028301ED400EE8B0F /* CryptoTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F25A9F28301ED400EE8B0F /* CryptoTableViewCellViewModel.swift */; };
+		88F25AA228302CF700EE8B0F /* DetailCoinViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F25AA128302CF700EE8B0F /* DetailCoinViewControllerViewModel.swift */; };
+		88F25AA42830395700EE8B0F /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F25AA32830395700EE8B0F /* DataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		88036E18284F97C700896B16 /* FavoritCoinsViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritCoinsViewControllerViewModel.swift; sourceTree = "<group>"; };
+		88036E1D2850CA2600896B16 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		88036E612850F92C00896B16 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		88036E652850FCD000896B16 /* Cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Cell.xib; sourceTree = "<group>"; };
+		8820C9E6287D970000FE4C81 /* BackOfCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackOfCardView.swift; sourceTree = "<group>"; };
+		8820C9E8287D970300FE4C81 /* FaceCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceCardView.swift; sourceTree = "<group>"; };
+		8882BE24287D94920061A2FD /* DetailCoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCoinView.swift; sourceTree = "<group>"; };
+		88AA580728847AB3001EC8FE /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		88AA580928847E5F001EC8FE /* DataManagerCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerCoreData.swift; sourceTree = "<group>"; };
+		88AA585828848251001EC8FE /* CryptoTrackerV2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CryptoTrackerV2.xcdatamodel; sourceTree = "<group>"; };
+		88AA585A2884841E001EC8FE /* CoinStatus+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoinStatus+CoreDataClass.swift"; sourceTree = "<group>"; };
+		88AA585B2884841E001EC8FE /* CoinStatus+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoinStatus+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		88AA58622888703E001EC8FE /* InternetConnectionStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternetConnectionStatus.swift; sourceTree = "<group>"; };
+		88AA5866288875E3001EC8FE /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
+		88D6D885287F65BD008E6407 /* CryptoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoCollectionViewCell.swift; sourceTree = "<group>"; };
+		88D6D887287F65D8008E6407 /* CollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionCell.xib; sourceTree = "<group>"; };
+		88F1BC1E2874526E0005AA95 /* CacheData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheData.swift; sourceTree = "<group>"; };
 		88F25A68282E6A7400EE8B0F /* CryptoTrackerV2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoTrackerV2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88F25A6B282E6A7400EE8B0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88F25A6D282E6A7400EE8B0F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		88F25A72282E6A7400EE8B0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		88F25A74282E6A7500EE8B0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		88F25A77282E6A7500EE8B0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		88F25A79282E6A7500EE8B0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		88F25A7F282E6EE100EE8B0F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		88F25A81282E6EFD00EE8B0F /* DetailCoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCoinViewController.swift; sourceTree = "<group>"; };
-		88F25A85282E732D00EE8B0F /* CryptoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoTableViewCell.swift; sourceTree = "<group>"; };
 		88F25A8F282E7BFA00EE8B0F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		88F25A91282E7C4400EE8B0F /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		88F25A93282E81A800EE8B0F /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
-		88F25AC728327A3500EE8B0F /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		88F25A9D28301AE200EE8B0F /* MainViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerViewModel.swift; sourceTree = "<group>"; };
+		88F25A9F28301ED400EE8B0F /* CryptoTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoTableViewCellViewModel.swift; sourceTree = "<group>"; };
+		88F25AA128302CF700EE8B0F /* DetailCoinViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCoinViewControllerViewModel.swift; sourceTree = "<group>"; };
+		88F25AA32830395700EE8B0F /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +81,59 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		88036E15284F973B00896B16 /* FavoritCoinsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				88036E18284F97C700896B16 /* FavoritCoinsViewControllerViewModel.swift */,
+			);
+			path = FavoritCoinsViewController;
+			sourceTree = "<group>";
+		};
+		88036E1C2850C9D800896B16 /* TabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				88036E1D2850CA2600896B16 /* MainTabBarController.swift */,
+			);
+			path = TabBarController;
+			sourceTree = "<group>";
+		};
+		8820C9EA287D971100FE4C81 /* CardView */ = {
+			isa = PBXGroup;
+			children = (
+				8820C9E8287D970300FE4C81 /* FaceCardView.swift */,
+				8820C9E6287D970000FE4C81 /* BackOfCardView.swift */,
+			);
+			path = CardView;
+			sourceTree = "<group>";
+		};
+		88AA57C328847A14001EC8FE /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				88AA580D28848092001EC8FE /* Entites */,
+				88AA580928847E5F001EC8FE /* DataManagerCoreData.swift */,
+				88AA580728847AB3001EC8FE /* CoreDataStack.swift */,
+				88AA585728848251001EC8FE /* CryptoTrackerV2.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		88AA580D28848092001EC8FE /* Entites */ = {
+			isa = PBXGroup;
+			children = (
+				88AA585A2884841E001EC8FE /* CoinStatus+CoreDataClass.swift */,
+				88AA585B2884841E001EC8FE /* CoinStatus+CoreDataProperties.swift */,
+			);
+			path = Entites;
+			sourceTree = "<group>";
+		};
+		88F1BC1D287452560005AA95 /* CachData */ = {
+			isa = PBXGroup;
+			children = (
+				88F1BC1E2874526E0005AA95 /* CacheData.swift */,
+			);
+			path = CachData;
+			sourceTree = "<group>";
+		};
 		88F25A5F282E6A7400EE8B0F = {
 			isa = PBXGroup;
 			children = (
@@ -68,11 +153,14 @@
 		88F25A6A282E6A7400EE8B0F /* CryptoTrackerV2 */ = {
 			isa = PBXGroup;
 			children = (
+				88036E1C2850C9D800896B16 /* TabBarController */,
 				88F25A89282E79BE00EE8B0F /* MainCryptoTable */,
 				88F25A88282E797E00EE8B0F /* DetailCoinViewController */,
+				88036E15284F973B00896B16 /* FavoritCoinsViewController */,
 				88F25A87282E796300EE8B0F /* CryptoTableViewCell */,
 				88F25A8A282E79F100EE8B0F /* StoryBoard */,
 				88F25A8E282E7AD200EE8B0F /* Models */,
+				88F1BC1D287452560005AA95 /* CachData */,
 				88F25A8D282E7A7100EE8B0F /* Services */,
 				88F25A8C282E7A3800EE8B0F /* Supporting Files */,
 				88F25A8B282E7A2300EE8B0F /* Resources */,
@@ -83,7 +171,10 @@
 		88F25A87282E796300EE8B0F /* CryptoTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				88F25A85282E732D00EE8B0F /* CryptoTableViewCell.swift */,
+				88036E652850FCD000896B16 /* Cell.xib */,
+				88D6D887287F65D8008E6407 /* CollectionCell.xib */,
+				88D6D885287F65BD008E6407 /* CryptoCollectionViewCell.swift */,
+				88F25A9F28301ED400EE8B0F /* CryptoTableViewCellViewModel.swift */,
 			);
 			path = CryptoTableViewCell;
 			sourceTree = "<group>";
@@ -91,7 +182,9 @@
 		88F25A88282E797E00EE8B0F /* DetailCoinViewController */ = {
 			isa = PBXGroup;
 			children = (
-				88F25A81282E6EFD00EE8B0F /* DetailCoinViewController.swift */,
+				8820C9EA287D971100FE4C81 /* CardView */,
+				8882BE24287D94920061A2FD /* DetailCoinView.swift */,
+				88F25AA128302CF700EE8B0F /* DetailCoinViewControllerViewModel.swift */,
 			);
 			path = DetailCoinViewController;
 			sourceTree = "<group>";
@@ -99,7 +192,8 @@
 		88F25A89282E79BE00EE8B0F /* MainCryptoTable */ = {
 			isa = PBXGroup;
 			children = (
-				88F25A7F282E6EE100EE8B0F /* MainViewController.swift */,
+				88036E612850F92C00896B16 /* MainViewController.swift */,
+				88F25A9D28301AE200EE8B0F /* MainViewControllerViewModel.swift */,
 			);
 			path = MainCryptoTable;
 			sourceTree = "<group>";
@@ -107,7 +201,6 @@
 		88F25A8A282E79F100EE8B0F /* StoryBoard */ = {
 			isa = PBXGroup;
 			children = (
-				88F25A71282E6A7400EE8B0F /* Main.storyboard */,
 			);
 			path = StoryBoard;
 			sourceTree = "<group>";
@@ -134,9 +227,12 @@
 		88F25A8D282E7A7100EE8B0F /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				88AA57C328847A14001EC8FE /* CoreData */,
+				88AA58622888703E001EC8FE /* InternetConnectionStatus.swift */,
 				88F25A8F282E7BFA00EE8B0F /* NetworkManager.swift */,
 				88F25A91282E7C4400EE8B0F /* ImageManager.swift */,
-				88F25AC728327A3500EE8B0F /* DataManager.swift */,
+				88F25AA32830395700EE8B0F /* DataManager.swift */,
+				88AA5866288875E3001EC8FE /* AlertController.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -208,8 +304,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				88F25A78282E6A7500EE8B0F /* LaunchScreen.storyboard in Resources */,
+				88036E662850FCD000896B16 /* Cell.xib in Resources */,
 				88F25A75282E6A7500EE8B0F /* Assets.xcassets in Resources */,
-				88F25A73282E6A7400EE8B0F /* Main.storyboard in Resources */,
+				88D6D888287F65D8008E6407 /* CollectionCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,14 +317,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88F25A9E28301AE300EE8B0F /* MainViewControllerViewModel.swift in Sources */,
+				8820C9E7287D970000FE4C81 /* BackOfCardView.swift in Sources */,
+				88AA585C2884841E001EC8FE /* CoinStatus+CoreDataClass.swift in Sources */,
+				88F25AA42830395700EE8B0F /* DataManager.swift in Sources */,
+				88AA5867288875E3001EC8FE /* AlertController.swift in Sources */,
+				88AA580828847AB3001EC8FE /* CoreDataStack.swift in Sources */,
+				88036E1E2850CA2600896B16 /* MainTabBarController.swift in Sources */,
+				88AA585D2884841E001EC8FE /* CoinStatus+CoreDataProperties.swift in Sources */,
+				88D6D886287F65BD008E6407 /* CryptoCollectionViewCell.swift in Sources */,
+				88036E19284F97C700896B16 /* FavoritCoinsViewControllerViewModel.swift in Sources */,
 				88F25A90282E7BFA00EE8B0F /* NetworkManager.swift in Sources */,
+				8882BE25287D94920061A2FD /* DetailCoinView.swift in Sources */,
 				88F25A6C282E6A7400EE8B0F /* AppDelegate.swift in Sources */,
+				88AA58632888703E001EC8FE /* InternetConnectionStatus.swift in Sources */,
+				88AA580A28847E5F001EC8FE /* DataManagerCoreData.swift in Sources */,
+				88F25AA028301ED400EE8B0F /* CryptoTableViewCellViewModel.swift in Sources */,
+				88F25AA228302CF700EE8B0F /* DetailCoinViewControllerViewModel.swift in Sources */,
+				88F1BC1F2874526E0005AA95 /* CacheData.swift in Sources */,
 				88F25A92282E7C4400EE8B0F /* ImageManager.swift in Sources */,
+				88036E622850F92C00896B16 /* MainViewController.swift in Sources */,
+				8820C9E9287D970300FE4C81 /* FaceCardView.swift in Sources */,
+				88AA585928848251001EC8FE /* CryptoTrackerV2.xcdatamodeld in Sources */,
 				88F25A6E282E6A7400EE8B0F /* SceneDelegate.swift in Sources */,
-				88F25A86282E732D00EE8B0F /* CryptoTableViewCell.swift in Sources */,
-				88F25A80282E6EE200EE8B0F /* MainViewController.swift in Sources */,
-				88F25A82282E6EFD00EE8B0F /* DetailCoinViewController.swift in Sources */,
-				88F25AC828327A3500EE8B0F /* DataManager.swift in Sources */,
 				88F25A94282E81A800EE8B0F /* Coin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -235,14 +347,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		88F25A71282E6A7400EE8B0F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				88F25A72282E6A7400EE8B0F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		88F25A76282E6A7500EE8B0F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -382,7 +486,7 @@
 				INFOPLIST_FILE = "CryptoTrackerV2/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -410,7 +514,7 @@
 				INFOPLIST_FILE = "CryptoTrackerV2/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -448,6 +552,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		88AA585728848251001EC8FE /* CryptoTrackerV2.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				88AA585828848251001EC8FE /* CryptoTrackerV2.xcdatamodel */,
+			);
+			currentVersion = 88AA585828848251001EC8FE /* CryptoTrackerV2.xcdatamodel */;
+			path = CryptoTrackerV2.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 88F25A60282E6A7400EE8B0F /* Project object */;
 }

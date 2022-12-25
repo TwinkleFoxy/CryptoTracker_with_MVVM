@@ -12,7 +12,7 @@ struct Coin: Codable {
     let id: String
     let symbol: String
     let name: String
-    let image: String
+    let image: URL
     let current_price: Double
     let market_cap: Int
     let circulating_supply: Double?

@@ -2,7 +2,7 @@
 //  DataManager.swift
 //  CryptoTrackerV2
 //
-//  Created by Алексей Однолько on 16.05.2022.
+//  Created by Алексей Однолько on 15.05.2022.
 //
 
 import Foundation
@@ -15,11 +15,11 @@ class DataManager {
     
     private init() {}
     
-    func setFavoriteStatus(for coinName: String, with status: Bool) {
-        userDefaults.set(status, forKey: coinName)
+    func setFavoriteStatus(for courseName: String, with status: Bool) {
+        userDefaults.set(status, forKey: courseName)
     }
     
-    func getFavoriteStatus(for coinName: String) -> Bool {
-        userDefaults.bool(forKey: coinName)
+    func getFavoriteStatus(for courseName: String) -> Bool {
+        userDefaults.bool(forKey: courseName)
     }
 }
