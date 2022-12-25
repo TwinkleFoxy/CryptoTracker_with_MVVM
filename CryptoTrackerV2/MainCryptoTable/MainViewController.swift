@@ -94,7 +94,7 @@ class MainViewController: UIViewController {
         
         viewModel.viewModelDidChange = { [unowned self] in
             DispatchQueue.main.async {
-                collectionView.reloadData()
+                self.collectionView.reloadData()
             }
         }
     }
@@ -126,7 +126,7 @@ class MainViewController: UIViewController {
                 refrashControl.endRefreshing()
             } else {
                 present(AlertController.showAlertController(title: "Internet connection Error", message: "Check internet connection"), animated: true) {
-                    refrashControl.endRefreshing()
+                    self.refrashControl.endRefreshing()
                 }
             }
         }
@@ -141,7 +141,7 @@ class MainViewController: UIViewController {
                 refrashControl.endRefreshing()
             } else {
                 present(AlertController.showAlertController(title: "Internet connection Error", message: "Check internet connection"), animated: true) {
-                    refrashControl.endRefreshing()
+                    self.refrashControl.endRefreshing()
                 }
             }
         }
